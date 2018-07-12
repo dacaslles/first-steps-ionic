@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Nosotros
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- lista -->
+  <ion-card>
+    <ion-card-header color="primary">
+      Mi primera lista
+    </ion-card-header>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="cart" item-start></ion-icon>
+        Shopping
+      </button>
+      <button ion-item>
+        <ion-icon name="medical" item-start></ion-icon>
+        Hospital
+      </button>
+      <button ion-item *ngFor="let item of list" [ngStyle] = "{'color':item.color}">
+        {{item.title}}
+      </button>
+    </ion-list>
+  </ion-card>
+</ion-content>
