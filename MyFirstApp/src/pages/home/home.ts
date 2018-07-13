@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { MasinfoPage } from '../masinfo/masinfo';
 
 @Component({
@@ -8,7 +8,7 @@ import { MasinfoPage } from '../masinfo/masinfo';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public alert: AlertController) {
 
   }
 
@@ -16,5 +16,43 @@ export class HomePage {
 
     this.navCtrl.push(MasinfoPage);
     
+  }
+
+  doBasicAlert(){
+    let myAlert = this.alert.create({
+      title: 'Titulo de la alerta',
+      message: 'Mensaje para usar',
+      buttons: ['OK','No OK']
+    });
+    myAlert.present();
+  }
+
+  doEnterAlert(){
+    let myAlert = this.alert.create({
+      title: 'Campo requerido',
+      message: 'Ingrese nombre',
+      inputs: [
+        {
+          name: 'Nombre',
+          placeholder: 'nombre'
+        }
+      ],
+      buttons: 
+      [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log('Cancel pressed');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            console.log('Saved pressed')
+          }
+        }
+      ]
+    });
+    myAlert.present();
   }
 }
